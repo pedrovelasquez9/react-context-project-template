@@ -3,11 +3,13 @@ import { Context } from "../../store/Store";
 import { fetchData } from "../../services/dataService";
 import ListItem from "../ListItem/ListItem";
 import { DATA_ACTIONS } from "../../utils/actionHelpers";
+import Loading from "../Loading/Loading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const Data = () => {
   const [state, dispatch] = useContext(Context);
 
-  useEffect(() => {
+  const fetchInitialData = () => {
     fetchData()
       .then((jsonData) => {
         const data = jsonData.results;
@@ -16,12 +18,21 @@ const Data = () => {
       .catch((error) => {
         dispatch({ type: DATA_ACTIONS.SET_ERROR, payload: error });
       });
+  };
+
+  useEffect(() => {
+    fetchInitialData();
   }, []);
 
-  let data = <p>Cargando...</p>;
+  let data = <Loading message="Cargando..."></Loading>;
 
   if (state.error) {
-    data = <p>Ha ocurrido un error llamando a la API</p>;
+    data = (
+      <ErrorMessage
+        message="Ha ocurrido un error llamando a la API"
+        error={state.error}
+      ></ErrorMessage>
+    );
   }
 
   if (!state.error && state.data) {
