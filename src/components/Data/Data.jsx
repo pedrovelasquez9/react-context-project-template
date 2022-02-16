@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import "./Data.css";
 import { Context } from "../../store/Store";
 import { fetchData } from "../../services/dataService";
 import ListItem from "../ListItem/ListItem";
@@ -41,7 +42,7 @@ const Data = () => {
     });
   }
 
-  return <ul>{data}</ul>;
+  return <ul className="main-ul">{data}</ul>;
 };
 
 export default Data;

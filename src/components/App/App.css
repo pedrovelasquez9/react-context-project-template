@@ -1,14 +1,16 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  border-radius: 100px 0 0 100px;
 }
 
-.App-header {
-  background-color: #282c34;
+.App-section {
+  width: 50%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,10 +20,37 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pee-section {
+  background-color: #004aad;
 }
 
-button {
-  font-size: calc(10px + 2vmin);
+.react-section {
+  background-color: #74b0ff;
+}
+
+.pee-main-title {
+  font-size: 20px;
+}
+
+.pee-subtitle {
+  font-size: 15px;
+}
+
+.pee-subtitle a {
+  color: #fff;
+}
+
+.App-link {
+  color: #fff;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 700px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .App-section {
+    width: 100%;
+  }
 }

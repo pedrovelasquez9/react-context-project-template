@@ -6,10 +6,18 @@ import Data from "../Data/Data";
 function App() {
   return (
     <Store>
-      <div className="App">
-        <header className="App-header">
+      <main className="App">
+        <section className="pee-section App-section">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Hello Vite + React!</p>
+          <p className="pee-main-title">
+            Aplicación base usando Vite + React con control de state sin Redux!
+          </p>
+          <p className="pee-subtitle">
+            Desarrollado en vivo en el canal de{" "}
+            <a href="https://my.bio/prog-es">Programación en español</a>
+          </p>
+        </section>
+        <section className="react-section App-section">
           <Data></Data>
           <p>
             <a
@@ -18,7 +26,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Learn React
+              React
             </a>
             {" | "}
             <a
@@ -27,11 +35,11 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Vite Docs
+              Vite
             </a>
           </p>
-        </header>
-      </div>
+        </section>
+      </main>
     </Store>
   );
 }
