@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import "./Data.css";
 import { Context } from "../../store/Store";
-import { fetchData } from "../../services/dataService";
+import { fetchData, fetchPokemonDetails } from "../../services/dataService";
 import ListItem from "../ListItem/ListItem";
 import { DATA_ACTIONS } from "../../utils/actionHelpers";
 import Loading from "../Loading/Loading";
@@ -10,15 +10,14 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 const Data = () => {
   const [state, dispatch] = useContext(Context);
 
-  const fetchInitialData = () => {
-    fetchData()
-      .then((jsonData) => {
-        const data = jsonData.results;
-        dispatch({ type: DATA_ACTIONS.SET_DATA, payload: data });
-      })
-      .catch((error) => {
-        dispatch({ type: DATA_ACTIONS.SET_ERROR, payload: error });
-      });
+  const fetchInitialData = async () => {
+    try {
+      const jsonData = await fetchData();
+      const data = jsonData.results;
+      dispatch({ type: DATA_ACTIONS.SET_DATA, payload: data });
+    } catch (error) {
+      dispatch({ type: DATA_ACTIONS.SET_ERROR, payload: error });
+    }
   };
 
   useEffect(() => {

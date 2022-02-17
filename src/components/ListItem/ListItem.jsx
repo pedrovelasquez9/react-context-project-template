@@ -3,8 +3,7 @@ import pokeball from "../../assets/images/pokeball.png";
 
 //TODO: fetch pokemon detail
 const ListItem = ({ value }) => {
-  console.log(value);
-  const { url, name, sprites } = value;
+  const { url, name } = value;
   return (
     <li className="list-item">
       <img src={pokeball} className="pokeball-icon" />
